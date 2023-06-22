@@ -1,5 +1,5 @@
 ---
-import IconHamburger from "./icon-hamburger.astro";
+import IconHamburger from "./IconHamburger.astro";
 
 const planetList = [
     "mercury",
@@ -99,9 +99,7 @@ const planetList = [
     }
 
     /* Nav list links accent visibility configuration */
-    :root {
-        --accent-visible: hidden;
-    }
+
     .accent-hover:has(+ a:hover) {
         --accent-visible: visible !important;
     }

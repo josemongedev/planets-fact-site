@@ -55,6 +55,14 @@
   /* Other colors */
   --clr-other-1: #838391;
   --clr-other-2: #38384f;
+
+  /* Header accent color */
+  --accent-visible: hidden;
+
+  /* Content button options variables */
+  --show-overview: block;
+  --show-structure: none;
+  --show-geology: none;
 }
 
 .container-border-gray {
