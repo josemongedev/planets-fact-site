@@ -1,0 +1,46 @@
+---
+import PlanetDetail from "../components/PlanetDetail.astro";
+import Layout from "../layouts/Layout.astro";
+
+interface Frontmatter {
+    name: string;
+    overview: Overview;
+    structure: Overview;
+    geology: Overview;
+    rotation: string;
+    revolution: string;
+    radius: string;
+    temperature: string;
+    images: Images;
+}
+
+interface Images {
+    planet: string;
+    internal: string;
+    geology: string;
+}
+
+interface Overview {
+    content: string;
+    source: string;
+}
+
+export async function getStaticPaths() {
+    const planets = await Astro.glob<Frontmatter>("./planets/**/*.md");
+
+    return planets.map((planet) => ({
+        params: {
+            planet: planet.frontmatter.name,
+        },
+        props: {
+            planet,
+        },
+    }));
+}
+
+const planet = Astro.props.planet;
+---
+
+<Layout title="Frontend Mentor | Planets fact site">
+    <PlanetDetail planet={planet.frontmatter} />
+</Layout>

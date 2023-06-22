@@ -1,0 +1,17 @@
+---
+export interface Props {
+    name?: string;
+    filePath?: string;
+}
+
+const { name, filePath, ...attributes } = Astro.props as Props;
+
+let svgImportPath;
+
+if (name) svgImportPath = `../svg/${name}.svg?raw`;
+else svgImportPath = ".".concat(filePath!.concat("?raw"));
+/* @vite-ignore */
+const { default: innerHTML } = await import(svgImportPath);
+---
+
+<Fragment {...attributes} set:html={innerHTML} />

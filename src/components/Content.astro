@@ -1,0 +1,213 @@
+---
+import Figure from "./Figure.astro";
+import PlanetTooltip from "./PlanetTooltip.astro";
+
+interface Images {
+    planet: string;
+    internal: string;
+    geology: string;
+}
+
+interface Overview {
+    content: string;
+    source: string;
+}
+
+const { name, overview, geology, structure, images } = Astro.props as {
+    name: string;
+    overview: Overview;
+    geology: Overview;
+    structure: Overview;
+    images: Images;
+};
+---
+
+<div class="planet-figure">
+    <div class="figure-img" data-content="overview">
+        <Figure filePath={images.planet} />
+    </div>
+    <div class="figure-img" data-content="structure">
+        <Figure filePath={images.internal} />
+    </div>
+    <div class="figure-img" data-content="geology">
+        <Figure filePath={images.planet} />
+    </div>
+    <img
+        class="figure-tooltip"
+        src={images.geology}
+        alt={geology.content}
+        data-content="geology"
+    />
+
+    <!-- <aside >
+        <PlanetTooltip fileImg={images.geology} />
+    </aside> -->
+</div>
+<section class="planet-content">
+    <div class="planet-legend">
+        <h1>{name}</h1>
+        <p class="planet-overview" data-content="overview">
+            {overview.content}
+        </p>
+        <p class="planet-structure" data-content="structure">
+            {structure.content}
+        </p>
+        <p class="planet-geology" data-content="geology">
+            {geology.content}
+        </p>
+        <span>
+            <span data-content="overview">
+                Source: <a class="overview-source" href={overview.source}>
+                    Wikipedia
+                </a>
+            </span>
+            <span data-content="structure">
+                Source: <a class="structures-source" href={structure.source}>
+                    Wikipedia
+                </a>
+            </span>
+            <span data-content="geology">
+                Source: <a class="geology-source" href={geology.source}>
+                    Wikipedia
+                </a>
+            </span>
+        </span>
+    </div>
+    <div class="planet-options">
+        <button>
+            <span>01</span><span>Overview</span>
+        </button>
+        <button>
+            <span>02</span><span>Internal Structure</span>
+        </button>
+        <button>
+            <span>03</span><span>Surface Geology</span>
+        </button>
+    </div>
+</section>
+
+<script></script>
+
+<style>
+    .planet-figure {
+        grid-area: figure;
+    }
+
+    /* End grid areas */
+
+    .figure-img {
+        display: flex;
+        justify-content: center;
+        width: 450px;
+        height: 450px;
+        border-radius: 50%;
+        overflow: clip;
+    }
+
+    .figure-tooltip {
+        width: 163px;
+        height: 199px;
+        top: calc(938px / 2);
+        left: calc(925px / 2 - 163px / 2);
+        position: absolute;
+        z-index: 1;
+    }
+    :root {
+        --show-overview: block;
+        --show-structure: none;
+        --show-geology: none;
+    }
+    .planet-content {
+        grid-area: content;
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        flex-wrap: nowrap;
+        min-height: 541px;
+        gap: 39px;
+    }
+
+    .planet-legend {
+        height: 326px;
+        width: 350px;
+        display: flex;
+        flex-direction: column;
+        gap: 23px;
+    }
+
+    .planet-legend span,
+    .planet-legend a,
+    .planet-legend a:visited,
+    .planet-legend a:active {
+        opacity: 0.5;
+        color: var(--clr-text-primary);
+    }
+
+    .planet-options {
+        /* min-height: 176px; */
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+
+    button:focus:nth-child(1) {
+        background-color: var(--clr-accent-planet);
+    }
+    button:focus:nth-child(2) {
+        background-color: var(--clr-accent-planet);
+    }
+    button:focus:nth-child(3) {
+        background-color: var(--clr-accent-planet);
+    }
+
+    :root:has(button:focus:nth-child(1)) {
+        --show-overview: block;
+        --show-structure: none;
+        --show-geology: none;
+    }
+    :root:has(button:focus:nth-child(2)) {
+        --show-overview: none;
+        --show-structure: block;
+        --show-geology: none;
+    }
+    :root:has(button:focus:nth-child(3)) {
+        --show-overview: none;
+        --show-structure: none;
+        --show-geology: block;
+    }
+
+    [data-content="overview"] {
+        display: var(--show-overview);
+    }
+    [data-content="structure"] {
+        display: var(--show-structure);
+    }
+    [data-content="geology"] {
+        display: var(--show-geology);
+    }
+
+    /* Selected by default when buttons lose focus */
+    .planet-options:not(:focus-within) button:first-child {
+        background-color: var(--clr-accent-planet);
+    }
+
+    @media (min-width: 768px) {
+        .planet-content {
+            flex-direction: row;
+        }
+
+        button > span:first-child {
+            opacity: 0.5;
+            margin-right: 17px;
+        }
+    }
+
+    @media (min-width: 1440px) {
+        button > span:first-child {
+            margin-right: 28px;
+        }
+        .planet-content {
+            flex-direction: column;
+        }
+    }
+</style>

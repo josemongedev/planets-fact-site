@@ -1,0 +1,72 @@
+---
+const { rotation, revolution, radius, temperature } = Astro.props;
+---
+
+<footer class="planet-footer">
+    <section class="container-border-gray">
+        <h4>Rotation Time</h4>
+        <div class="heading-2">{rotation}</div>
+    </section>
+
+    <section class="container-border-gray">
+        <h4>Revolution Time</h4>
+        <div class="heading-2">{revolution}</div>
+    </section>
+
+    <section class="container-border-gray">
+        <h4>Radius</h4>
+        <div class="heading-2">{radius}</div>
+    </section>
+
+    <section class="container-border-gray">
+        <h4>Average Temp.</h4>
+        <div class="heading-2">{temperature}</div>
+    </section>
+</footer>
+
+<style>
+    .planet-footer {
+        grid-area: footer;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    section {
+        display: flex;
+        flex-direction: column;
+        align-items: start;
+        justify-content: center;
+        width: 255px;
+        height: 128px;
+        padding: 23px;
+    }
+
+    div {
+        font-family: "Antonio", sans-serif;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 40px;
+        line-height: 52px;
+        /* identical to box height */
+        letter-spacing: -1.5px;
+        text-transform: uppercase;
+    }
+
+    h4 {
+        opacity: 0.5;
+    }
+
+    @media (min-width: 768px) {
+        .planet-footer {
+            flex-direction: row;
+        }
+    }
+    @media (min-width: 1440px) {
+        .planet-footer {
+            gap: 30px;
+            grid-area: footer;
+        }
+    }
+</style>

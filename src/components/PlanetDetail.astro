@@ -1,0 +1,95 @@
+---
+import Figure from "./Figure.astro";
+import Header from "./Header.astro";
+import Footer from "./Footer.astro";
+import Content from "./Content.astro";
+
+interface Frontmatter {
+    name: string;
+    overview: Overview;
+    structure: Overview;
+    geology: Overview;
+    rotation: string;
+    revolution: string;
+    radius: string;
+    temperature: string;
+    images: Images;
+}
+
+interface Images {
+    planet: string;
+    internal: string;
+    geology: string;
+}
+
+interface Overview {
+    content: string;
+    source: string;
+}
+const planet = Astro.props.planet as Frontmatter;
+const lowercasePlanet = planet.name.toLowerCase();
+
+const planetClass = "planet-".concat(lowercasePlanet);
+---
+
+<main class={planetClass}>
+    <Header />
+    <article>
+        <Content
+            name={planet.name}
+            overview={planet.overview}
+            geology={planet.geology}
+            structure={planet.structure}
+            images={planet.images}
+        />
+        <Footer
+            rotation={planet.rotation}
+            revolution={planet.revolution}
+            radius={planet.radius}
+            temperature={planet.temperature}
+        />
+    </article>
+</main>
+
+<style>
+    main {
+        height: 100vh;
+        width: 100%;
+        background-image: url(../svg/background-stars.svg);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        /* justify-content: center; */
+    }
+
+    /* Grid and areas */
+    article {
+        width: 100%;
+        display: grid;
+        grid-template-areas:
+            "figure content"
+            "footer footer";
+        place-items: center;
+        /* height: 784px;
+        width: 327px; */
+    }
+
+    @media (min-width: 768px) {
+        article {
+            /* height: 829px;
+            width: 689px; */
+        }
+    }
+    @media (min-width: 1440px) {
+        article {
+            /* width: 100%; */
+            /* width: 1110px;
+            height: 100%; */
+            grid-template-columns: 925px calc(100% - 925px);
+            /* grid-auto-rows: max(582px); */
+            padding-bottom: 56px;
+            padding-right: 165px;
+            height: 882px;
+        }
+    }
+</style>

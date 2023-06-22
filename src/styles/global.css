@@ -1,0 +1,177 @@
+@font-face {
+  font-family: "Antonio";
+  src: url("/planets-fact-site/fonts/Antonio-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Spartan";
+  src: url("/planets-fact-site/fonts/LeagueSpartan-Bold.ttf");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+*,
+*::after,
+*::before {
+  box-sizing: border-box;
+}
+:root {
+  /* Color variables */
+  /* *************** */
+
+  /* Text colors */
+  --clr-text-primary: #ffffff;
+  --clr-text-secondary: rgba(255, 255, 255, 0.5);
+
+  /* Planet colors */
+  --clr-accent-mercury: #419ebb;
+  --clr-accent-jupiter: #d83a34;
+  --clr-accent-earth: #6d2ed5;
+  --clr-accent-mars: #d14c32;
+  --clr-accent-venus: #eda249;
+  --clr-accent-saturn: #cd5120;
+  --clr-accent-neptune: #2d68f0;
+  --clr-accent-uranus: #1ec1a2;
+
+  /* Each route path should switch this CSS variable to the current planet color.
+    Default is earth's color */
+  --clr-accent-planet: var(--clr-accent-earth);
+
+  /* Button colors */
+  --btn-default: var(--clr-background);
+  --btn-active: var(--clr-accent-planet);
+  --btn-hover: rgba(216, 216, 216, 0.2);
+  --clr-hamburger-default: #ffffff;
+  --clr-hamburger-active: #979797;
+
+  /* Features and border colors */
+  --clr-border: rgba(255, 255, 255, 0.25);
+  --clr-separator-menu-mobile: rgba(151, 151, 151, 0.5);
+  --clr-separator-mobile: rgba(151, 151, 151, 0.2);
+  --clr-body-bg: #070724;
+
+  /* Other colors */
+  --clr-other-1: #838391;
+  --clr-other-2: #38384f;
+}
+
+.container-border-gray {
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--clr-border);
+}
+
+.planet-earth {
+  --clr-accent-planet: var(--clr-accent-earth);
+}
+.planet-mercury {
+  --clr-accent-planet: var(--clr-accent-mercury);
+}
+.planet-venus {
+  --clr-accent-planet: var(--clr-accent-venus);
+}
+.planet-mars {
+  --clr-accent-planet: var(--clr-accent-mars);
+}
+.planet-jupiter {
+  --clr-accent-planet: var(--clr-accent-jupiter);
+}
+.planet-saturn {
+  --clr-accent-planet: var(--clr-accent-saturn);
+}
+.planet-uranus {
+  --clr-accent-planet: var(--clr-accent-uranus);
+}
+.planet-neptune {
+  --clr-accent-planet: var(--clr-accent-neptune);
+}
+
+h1,
+.header-1 {
+  font-family: "Antonio", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 80px;
+  line-height: 104px;
+  text-transform: uppercase;
+}
+
+h2,
+.header-2 {
+  font-family: "Antonio", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 52px;
+  /* identical to box height */
+  letter-spacing: -1.5px;
+  text-transform: uppercase;
+}
+
+h3,
+.header-3 {
+  font-family: "Spartan", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 11px;
+  line-height: 25px;
+  /* identical to box height, or 227% */
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+h4,
+.header-4 {
+  font-family: "Spartan";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 12px;
+  line-height: 25px;
+  /* identical to box height, or 208% */
+  letter-spacing: 2.57143px;
+  text-transform: uppercase;
+}
+
+html,
+body {
+  font-family: "Spartan";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 25px;
+  color: #ffffff;
+  background-color: var(--clr-body-bg);
+}
+
+button {
+  font-family: "Spartan", sans-serif;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 25px;
+  letter-spacing: 2.5714285373687744px;
+  text-align: left;
+  color: var(--clr-text-primary);
+
+  width: 350px;
+  height: 48px;
+  padding: 12px 28px 11px 28px;
+  mix-blend-mode: normal;
+  border: 1px solid var(--clr-border);
+  background-color: var(--btn-default);
+  text-transform: uppercase;
+
+  cursor: pointer;
+}
+
+button:focus,
+[data-btn-current] {
+  background-color: var(--btn-active);
+}
+
+button:hover {
+  background-color: var(--btn-hover);
+  mix-blend-mode: normal;
+  /* opacity: 0.2; */
+}
