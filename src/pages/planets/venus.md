@@ -14,7 +14,7 @@ revolution: 224.7 Days
 radius: 6,051.8 KM
 temperature: 471°c
 images:
-  planet: "./svg/planet-venus.svg"
-  internal: "./svg/planet-venus-internal.svg"
+  planet: "./assets/planet-venus.svg"
+  internal: "./assets/planet-venus-internal.svg"
   geology: "./assets/geology-venus.png"
 ---

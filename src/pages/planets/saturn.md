@@ -14,7 +14,7 @@ revolution: 29.46 Years
 radius: 58,232 KM
 temperature: "-138°c"
 images:
-  planet: "./svg/planet-saturn.svg"
-  internal: "./svg/planet-saturn-internal.svg"
+  planet: "./assets/planet-saturn.svg"
+  internal: "./assets/planet-saturn-internal.svg"
   geology: "./assets/geology-saturn.png"
 ---

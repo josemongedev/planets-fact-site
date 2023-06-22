@@ -24,7 +24,7 @@ revolution: 1.88 Years
 radius: 3,389.5 KM
 temperature: "-28°c"
 images:
-  planet: "./svg/planet-mars.svg"
-  internal: "./svg/planet-mars-internal.svg"
+  planet: "./assets/planet-mars.svg"
+  internal: "./assets/planet-mars-internal.svg"
   geology: "./assets/geology-mars.png"
 ---

@@ -14,7 +14,7 @@ revolution: 84 Years
 radius: 25,362 KM
 temperature: "-195°c"
 images:
-  planet: "./svg/planet-uranus.svg"
-  internal: "./svg/planet-uranus-internal.svg"
+  planet: "./assets/planet-uranus.svg"
+  internal: "./assets/planet-uranus-internal.svg"
   geology: "./assets/geology-uranus.png"
 ---

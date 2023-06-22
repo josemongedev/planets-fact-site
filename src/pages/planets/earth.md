@@ -26,7 +26,7 @@ revolution: 365.26 Days
 radius: 6,371 KM
 temperature: 16°c
 images:
-  planet: "./svg/planet-earth.svg"
-  internal: "./svg/planet-earth-internal.svg"
+  planet: "./assets/planet-earth.svg"
+  internal: "./assets/planet-earth-internal.svg"
   geology: "./assets/geology-earth.png"
 ---

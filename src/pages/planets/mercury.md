@@ -24,7 +24,7 @@ revolution: 87.97 Days
 radius: 2,439.7 KM
 temperature: 430°c
 images:
-  planet: "./svg/planet-mercury.svg"
-  internal: "./svg/planet-mercury-internal.svg"
+  planet: "./assets/planet-mercury.svg"
+  internal: "./assets/planet-mercury-internal.svg"
   geology: "./assets/geology-mercury.png"
 ---

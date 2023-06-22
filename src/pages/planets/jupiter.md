@@ -14,7 +14,7 @@ revolution: 11.86 Years
 radius: 69,911 KM
 temperature: "-108°c"
 images:
-  planet: "./svg/planet-jupiter.svg"
-  internal: "./svg/planet-jupiter-internal.svg"
+  planet: "./assets/planet-jupiter.svg"
+  internal: "./assets/planet-jupiter-internal.svg"
   geology: "./assets/geology-jupiter.png"
 ---

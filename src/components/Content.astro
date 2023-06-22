@@ -1,6 +1,5 @@
 ---
 import Figure from "./Figure.astro";
-import PlanetTooltip from "./PlanetTooltip.astro";
 
 interface Images {
     planet: string;
@@ -20,18 +19,24 @@ const { name, overview, geology, structure, images } = Astro.props as {
     structure: Overview;
     images: Images;
 };
+
+const planetImage = "/planets-fact-site/" + images.planet;
+const planetInternal = "/planets-fact-site/" + images.internal;
 ---
 
 <div class="planet-figure">
     <div class="flex-center">
         <div class="figure-img" data-content="overview">
-            <Figure filePath={images.planet} />
+            <img src={planetImage} alt="" />
+            <!-- <Figure filePath={images.planet} /> -->
         </div>
         <div class="figure-img" data-content="structure">
-            <Figure filePath={images.internal} />
+            <img src={planetInternal} alt="" />
+            <!-- <Figure filePath={images.internal} /> -->
         </div>
         <div class="figure-img" data-content="geology">
-            <Figure filePath={images.planet} />
+            <img src={planetImage} alt="" />
+            <!-- <Figure filePath={images.planet} /> -->
         </div>
         <img
             class="figure-tooltip"

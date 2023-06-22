@@ -14,7 +14,7 @@ revolution: 164.79 Years
 radius: 24,622 KM
 temperature: "-201°c"
 images:
-  planet: "./svg/planet-neptune.svg"
-  internal: "./svg/planet-neptune-internal.svg"
+  planet: "./assets/planet-neptune.svg"
+  internal: "./assets/planet-neptune-internal.svg"
   geology: "./assets/geology-neptune.png"
 ---
