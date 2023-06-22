@@ -22,6 +22,7 @@ const { name, overview, geology, structure, images } = Astro.props as {
 
 const planetImage = "/planets-fact-site/" + images.planet;
 const planetInternal = "/planets-fact-site/" + images.internal;
+const geologyImage = "/planets-fact-site/" + images.geology;
 ---
 
 <div class="planet-figure">
@@ -40,7 +41,7 @@ const planetInternal = "/planets-fact-site/" + images.internal;
         </div>
         <img
             class="figure-tooltip"
-            src={images.geology}
+            src={geologyImage}
             alt={geology.content}
             data-content="geology"
         />
