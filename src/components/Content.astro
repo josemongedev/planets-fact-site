@@ -23,25 +23,23 @@ const { name, overview, geology, structure, images } = Astro.props as {
 ---
 
 <div class="planet-figure">
-    <div class="figure-img" data-content="overview">
-        <Figure filePath={images.planet} />
+    <div class="flex-center">
+        <div class="figure-img" data-content="overview">
+            <Figure filePath={images.planet} />
+        </div>
+        <div class="figure-img" data-content="structure">
+            <Figure filePath={images.internal} />
+        </div>
+        <div class="figure-img" data-content="geology">
+            <Figure filePath={images.planet} />
+        </div>
+        <img
+            class="figure-tooltip"
+            src={images.geology}
+            alt={geology.content}
+            data-content="geology"
+        />
     </div>
-    <div class="figure-img" data-content="structure">
-        <Figure filePath={images.internal} />
-    </div>
-    <div class="figure-img" data-content="geology">
-        <Figure filePath={images.planet} />
-    </div>
-    <img
-        class="figure-tooltip"
-        src={images.geology}
-        alt={geology.content}
-        data-content="geology"
-    />
-
-    <!-- <aside >
-        <PlanetTooltip fileImg={images.geology} />
-    </aside> -->
 </div>
 <section class="planet-content">
     <div class="planet-legend">
@@ -55,7 +53,7 @@ const { name, overview, geology, structure, images } = Astro.props as {
         <p class="planet-geology" data-content="geology">
             {geology.content}
         </p>
-        <span>
+        <div>
             <span data-content="overview">
                 Source: <a class="overview-source" href={overview.source}>
                     Wikipedia
@@ -71,47 +69,46 @@ const { name, overview, geology, structure, images } = Astro.props as {
                     Wikipedia
                 </a>
             </span>
-        </span>
-    </div>
-    <div class="planet-options">
-        <button>
-            <span>01</span><span>Overview</span>
-        </button>
-        <button>
-            <span>02</span><span>Internal Structure</span>
-        </button>
-        <button>
-            <span>03</span><span>Surface Geology</span>
-        </button>
+        </div>
     </div>
 </section>
-
-<script></script>
+<div class="planet-options">
+    <button>
+        <span>01</span><span>Overview</span>
+    </button>
+    <button>
+        <span>02</span><span>Internal Structure</span>
+    </button>
+    <button>
+        <span>03</span><span>Surface Geology</span>
+    </button>
+</div>
 
 <style>
     .planet-figure {
         grid-area: figure;
     }
+    .planet-options {
+        grid-area: options;
+    }
 
     /* End grid areas */
-
-    .figure-img {
+    .flex-center {
         display: flex;
         justify-content: center;
-        width: 450px;
-        height: 450px;
-        border-radius: 50%;
-        overflow: clip;
+        align-items: center;
     }
 
-    .figure-tooltip {
-        width: 163px;
-        height: 199px;
-        top: calc(938px / 2);
-        left: calc(925px / 2 - 163px / 2);
-        position: absolute;
-        z-index: 1;
+    .figure-img {
+        /* min-width: 450px;
+        min-height: 450px; */
+        border-radius: 50%;
+        /* overflow: clip; */
     }
+
+    .figure-img > svg {
+    }
+
     :root {
         --show-overview: block;
         --show-structure: none;
@@ -123,7 +120,6 @@ const { name, overview, geology, structure, images } = Astro.props as {
         flex-direction: column;
         align-items: start;
         flex-wrap: nowrap;
-        min-height: 541px;
         gap: 39px;
     }
 
@@ -191,6 +187,16 @@ const { name, overview, geology, structure, images } = Astro.props as {
         background-color: var(--clr-accent-planet);
     }
 
+    .figure-tooltip {
+        --tooltip-w-size: 163px;
+        width: var(--tooltip-w-size);
+        height: 199px;
+        top: calc(100vh / 2);
+        left: calc(100vw / 2 - var(--tooltip-w-size) / 2);
+        position: absolute;
+        z-index: 1;
+    }
+
     @media (min-width: 768px) {
         .planet-content {
             flex-direction: row;
@@ -208,6 +214,16 @@ const { name, overview, geology, structure, images } = Astro.props as {
         }
         .planet-content {
             flex-direction: column;
+        }
+
+        .figure-tooltip {
+            top: calc(1024px / 2 + 84px / 2);
+            left: calc(
+                calc(100vw - 1440px) / 2 + 165px + 925px / 2 -
+                    var(--tooltip-w-size)
+            );
+            position: absolute;
+            z-index: 1;
         }
     }
 </style>

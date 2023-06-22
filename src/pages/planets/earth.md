@@ -1,5 +1,5 @@
 ---
-name: Earth
+name: earth
 overview:
   content:
     Third planet from the Sun and the only known planet to harbor life. About

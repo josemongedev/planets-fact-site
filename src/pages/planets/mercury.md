@@ -1,5 +1,5 @@
 ---
-name: Mercury
+name: mercury
 overview:
   content: Mercury is the smallest planet in the Solar System and the closest to
     the Sun. Its orbit around the Sun takes 87.97 Earth days, the shortest of all
