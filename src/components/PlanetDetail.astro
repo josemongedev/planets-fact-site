@@ -1,5 +1,4 @@
 ---
-import Figure from "./Figure.astro";
 import Header from "./Header.astro";
 import Footer from "./Footer.astro";
 import Content from "./Content.astro";
@@ -64,14 +63,17 @@ const planetClass = "planet-".concat(lowercasePlanet);
 
     /* Grid and areas */
     article {
-        --article-width: 327px;
+        --article-width: 375px;
         width: 100%;
-        padding-inline: calc(100vw / 2 - var(--article-width) / 2);
         display: grid;
         grid-template-areas:
-            "space1 figure content space2"
-            "space1 figure options space2"
-            "space1 footer footer  space2";
+            "space1 options  space2"
+            "space1 figure  space2"
+            "space1 content space2"
+            "space1 footer  space2";
+        grid-template-columns: 0 375px 0;
+        grid-template-rows: 50px 375px 235px calc(260px + 28px);
+
         place-items: center;
     }
 
@@ -82,20 +84,45 @@ const planetClass = "planet-".concat(lowercasePlanet);
     @media (min-width: 768px) {
         article {
             --article-width: 689px;
-
-            /* height: 829px;
-            width: 689px; */
+            grid-template-columns:
+                40px calc(var(--article-width) / 2) calc(
+                    var(--article-width) / 2
+                )
+                40px;
+            grid-template-rows: 460px 253px calc(88px + 27px);
+            /* grid-template-rows: auto auto auto auto; */
+            padding-inline: calc(100vw / 2 - 40px - var(--article-width) / 2);
+            height: 829px;
+            width: var(--article-width);
+            grid-template-areas:
+                "space1 figure figure space2"
+                "space1 content options space2"
+                "space1 footer footer  space2";
+            padding-top: 0px;
+        }
+        main {
+            /* padding-bottom: 36px; */
         }
     }
     @media (min-width: 1440px) {
+        main {
+            /* padding-bottom: 56px; */
+            padding: 0;
+        }
+
         article {
             --article-width: 1440px;
             justify-content: center;
+            align-self: center;
+
             grid-template-columns: 165px 760px 350px 165px;
             grid-template-rows: 326px 176px calc(87px + 128px);
             padding-top: 126px;
-            padding-bottom: 56px;
             height: 882px;
+            grid-template-areas:
+                "space1 figure content space2"
+                "space1 figure options space2"
+                "space1 footer footer  space2";
         }
     }
 </style>

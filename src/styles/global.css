@@ -101,9 +101,9 @@ h1,
   font-family: "Antonio", sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 80px;
-  line-height: 104px;
   text-transform: uppercase;
+  font-size: 40px;
+  line-height: 40px;
 }
 
 h2,
@@ -111,11 +111,9 @@ h2,
   font-family: "Antonio", sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: 40px;
-  line-height: 52px;
-  /* identical to box height */
-  letter-spacing: -1.5px;
   text-transform: uppercase;
+  font-size: 20px;
+  letter-spacing: -0.75px;
 }
 
 h3,
@@ -123,10 +121,6 @@ h3,
   font-family: "Spartan", sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 11px;
-  line-height: 25px;
-  /* identical to box height, or 227% */
-  letter-spacing: 1px;
   text-transform: uppercase;
 }
 
@@ -135,11 +129,46 @@ h4,
   font-family: "Spartan";
   font-style: normal;
   font-weight: 700;
-  font-size: 12px;
-  line-height: 25px;
-  /* identical to box height, or 208% */
-  letter-spacing: 2.57143px;
   text-transform: uppercase;
+  font-size: 8px;
+  line-height: 16px;
+  letter-spacing: 0.727px;
+}
+
+@media (min-width: 768px) {
+  h1,
+  .header-1 {
+    font-size: 48px;
+    line-height: 48px;
+  }
+}
+@media (min-width: 1440px) {
+  h1,
+  .header-1 {
+    font-size: 80px;
+    line-height: 104px;
+  }
+
+  h2,
+  .header-2 {
+    font-size: 40px;
+    line-height: 52px;
+    letter-spacing: -1.5px;
+  }
+
+  h3,
+  .header-3 {
+    font-size: 11px;
+    line-height: 25px;
+    letter-spacing: 1px;
+  }
+
+  h4,
+  .header-4 {
+    font-size: 12px;
+    line-height: 25px;
+    letter-spacing: 2.57143px;
+  }
 }
 
 html,
@@ -151,35 +180,4 @@ body {
   line-height: 25px;
   color: #ffffff;
   background-color: var(--clr-body-bg);
-}
-
-button {
-  font-family: "Spartan", sans-serif;
-  font-size: 12px;
-  font-weight: 700;
-  line-height: 25px;
-  letter-spacing: 2.5714285373687744px;
-  text-align: left;
-  color: var(--clr-text-primary);
-
-  width: 350px;
-  height: 48px;
-  padding: 12px 28px 11px 28px;
-  mix-blend-mode: normal;
-  border: 1px solid var(--clr-border);
-  background-color: var(--btn-default);
-  text-transform: uppercase;
-
-  cursor: pointer;
-}
-
-button:focus,
-[data-btn-current] {
-  background-color: var(--btn-active);
-}
-
-button:hover {
-  background-color: var(--btn-hover);
-  mix-blend-mode: normal;
-  /* opacity: 0.2; */
 }

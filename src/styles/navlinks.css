@@ -1,0 +1,24 @@
+.bg-mercury {
+  background-color: var(--clr-accent-mercury);
+}
+.bg-venus {
+  background-color: var(--clr-accent-venus);
+}
+.bg-earth {
+  background-color: var(--clr-accent-earth);
+}
+.bg-mars {
+  background-color: var(--clr-accent-mars);
+}
+.bg-jupiter {
+  background-color: var(--clr-accent-jupiter);
+}
+.bg-saturn {
+  background-color: var(--clr-accent-saturn);
+}
+.bg-uranus {
+  background-color: var(--clr-accent-uranus);
+}
+.bg-neptune {
+  background-color: var(--clr-accent-neptune);
+}

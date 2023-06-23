@@ -26,7 +26,7 @@ const geologyImage = "/planets-fact-site/" + images.geology;
 ---
 
 <div class="planet-figure">
-    <div class="flex-center">
+    <div class="scale-img">
         <div class="figure-img" data-content="overview">
             <img src={planetImage} alt="" />
             <!-- <Figure filePath={images.planet} /> -->
@@ -48,34 +48,32 @@ const geologyImage = "/planets-fact-site/" + images.geology;
     </div>
 </div>
 <section class="planet-content">
-    <div class="planet-legend">
-        <h1>{name}</h1>
-        <p class="planet-overview" data-content="overview">
-            {overview.content}
-        </p>
-        <p class="planet-structure" data-content="structure">
-            {structure.content}
-        </p>
-        <p class="planet-geology" data-content="geology">
-            {geology.content}
-        </p>
-        <div>
-            <span data-content="overview">
-                Source: <a class="overview-source" href={overview.source}>
-                    Wikipedia
-                </a>
-            </span>
-            <span data-content="structure">
-                Source: <a class="structures-source" href={structure.source}>
-                    Wikipedia
-                </a>
-            </span>
-            <span data-content="geology">
-                Source: <a class="geology-source" href={geology.source}>
-                    Wikipedia
-                </a>
-            </span>
-        </div>
+    <h1 class="header-1">{name}</h1>
+    <p class="planet-overview" data-content="overview">
+        {overview.content}
+    </p>
+    <p class="planet-structure" data-content="structure">
+        {structure.content}
+    </p>
+    <p class="planet-geology" data-content="geology">
+        {geology.content}
+    </p>
+    <div>
+        <span data-content="overview">
+            Source: <a class="overview-source" href={overview.source}>
+                Wikipedia
+            </a>
+        </span>
+        <span data-content="structure">
+            Source: <a class="structures-source" href={structure.source}>
+                Wikipedia
+            </a>
+        </span>
+        <span data-content="geology">
+            Source: <a class="geology-source" href={geology.source}>
+                Wikipedia
+            </a>
+        </span>
     </div>
 </section>
 <div class="planet-options">
@@ -83,10 +81,14 @@ const geologyImage = "/planets-fact-site/" + images.geology;
         <span>01</span><span>Overview</span>
     </button>
     <button>
-        <span>02</span><span>Internal Structure</span>
+        <span>02</span><span
+            ><span class="long-name">Internal&nbsp;</span>Structure</span
+        >
     </button>
     <button>
-        <span>03</span><span>Surface Geology</span>
+        <span>03</span><span
+            ><span class="long-name">Surface&nbsp;</span>Geology</span
+        >
     </button>
 </div>
 
@@ -97,64 +99,159 @@ const geologyImage = "/planets-fact-site/" + images.geology;
     .planet-options {
         grid-area: options;
     }
+    .planet-content {
+        grid-area: content;
+    }
 
     /* End grid areas */
-    .flex-center {
+
+    .planet-content {
         display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-
-    .figure-img {
-        /* min-width: 450px;
-        min-height: 450px; */
-        border-radius: 50%;
-        /* overflow: clip; */
-    }
-
-    .figure-img > svg {
+        flex-direction: column;
+        align-items: stretch;
+        flex-wrap: nowrap;
+        gap: 39px;
+        padding-inline: 24px;
     }
 
     .planet-content {
-        grid-area: content;
         display: flex;
         flex-direction: column;
-        align-items: start;
-        flex-wrap: nowrap;
-        gap: 39px;
+        justify-content: space-between;
+        align-items: stretch;
     }
 
-    .planet-legend {
-        height: 326px;
-        width: 350px;
+    .planet-options {
         display: flex;
-        flex-direction: column;
-        gap: 23px;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 16px;
+        border-style: solid;
+        border-width: 0 0 1px 0;
+        border-color: rgba(255, 255, 255, 0.2);
+        width: 100%;
+        height: 50px;
+        padding-inline: 24px;
     }
 
-    .planet-legend span,
-    .planet-legend a,
-    .planet-legend a:visited,
-    .planet-legend a:active {
+    .scale-img {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        scale: 0.597;
+    }
+    .long-name {
+        display: none;
+    }
+
+    .figure-tooltip {
+        --tooltip-w-size: 163px;
+        --tooltip-h-size: 199px;
+        width: var(--tooltip-w-size);
+        height: var(--tooltip-h-size);
+        top: calc(100% * 20 / 32);
+        left: calc(
+            100vw / - 375px / 2 + 24px + 327px / 2 - var(--tooltip-w-size)
+        );
+        position: absolute;
+        z-index: 1;
+    }
+
+    .planet-content span,
+    .planet-content a,
+    .planet-content a:visited,
+    .planet-content a:active {
         opacity: 0.5;
         color: var(--clr-text-primary);
     }
 
-    .planet-options {
-        /* min-height: 176px; */
-        display: flex;
-        flex-direction: column;
-        gap: 16px;
+    .planet-content {
+        text-align: center;
     }
 
-    button:focus:nth-child(1) {
-        background-color: var(--clr-accent-planet);
+    @media (min-width: 768px) {
+        .planet-content {
+            height: 326px;
+            width: 339px;
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            gap: 23px;
+            text-align: left;
+            place-self: center start;
+            padding-inline: 0px;
+        }
+
+        .planet-options {
+            width: 281px;
+            flex-direction: column;
+            gap: 16px;
+            place-self: start end;
+            border: none;
+        }
+
+        .long-name {
+            display: inline-block;
+        }
+        .scale-img {
+            scale: 0.63;
+        }
+        button > span:first-child {
+            opacity: 0.5;
+            margin-right: 17px;
+        }
+
+        .figure-tooltip {
+            position: absolute;
+            z-index: 1;
+            --tooltip-w-size: calc(163px);
+            --tooltip-h-size: calc(199px);
+            top: calc(100% * 20 / 32);
+            left: calc(
+                100vw / - 768px / 2 + 40px + 689px / 2 - var(--tooltip-w-size)
+            );
+        }
     }
-    button:focus:nth-child(2) {
-        background-color: var(--clr-accent-planet);
+
+    @media (min-width: 1440px) {
+        .planet-options {
+            place-self: start center;
+        }
+        .scale-img {
+            scale: 1;
+        }
+
+        button > span:first-child {
+            margin-right: 28px;
+        }
+        .planet-content {
+            flex-direction: column;
+        }
+
+        .planet-content {
+            height: 326px;
+            width: 350px;
+            gap: 23px;
+        }
+
+        .figure-tooltip {
+            position: absolute;
+            z-index: 1;
+            --tooltip-w-size: 163px;
+            --tooltip-h-size: 199px;
+            width: var(--tooltip-w-size);
+            height: var(--tooltip-h-size);
+            left: calc(
+                100vw / - 1440px / 2 + 165px + 925px / 2 - var(--tooltip-w-size)
+            );
+        }
     }
-    button:focus:nth-child(3) {
-        background-color: var(--clr-accent-planet);
+
+    /* Button configuration and variables  */
+    /* Selected by default when buttons lose focus */
+    .planet-options:not(:focus-within) button:first-child {
+        background-color: transparent;
     }
 
     :root:has(button:focus:nth-child(1)) {
@@ -183,48 +280,101 @@ const geologyImage = "/planets-fact-site/" + images.geology;
         display: var(--show-geology);
     }
 
-    /* Selected by default when buttons lose focus */
-    .planet-options:not(:focus-within) button:first-child {
+    button {
+        all: unset;
+
+        display: flex;
+        justify-content: left;
+        align-items: center;
+
+        font-family: "Spartan", sans-serif;
+        font-weight: 700;
+        font-size: 9px;
+        letter-spacing: 1.929px;
+        text-transform: uppercase;
+        opacity: 0.5;
+
+        color: var(--clr-text-primary);
+        background-color: var(--clr-body-bg);
+        height: 10px;
+        padding: 0;
+        margin: 0;
+        mix-blend-mode: normal;
+        color: #fff;
+        text-align: center;
+
+        cursor: pointer;
+    }
+
+    button:hover {
+        opacity: 1;
+    }
+
+    button:after {
+        display: block;
+        position: absolute;
+        top: 20px;
+        left: 0;
+        width: 80px;
+        height: 4px;
         background-color: var(--clr-accent-planet);
     }
 
-    .figure-tooltip {
-        --tooltip-w-size: 163px;
-        width: var(--tooltip-w-size);
-        height: 199px;
-        top: calc(100vh / 2);
-        left: calc(100vw / 2 - var(--tooltip-w-size) / 2);
-        position: absolute;
-        z-index: 1;
+    button > span:first-child {
+        display: none;
     }
 
     @media (min-width: 768px) {
-        .planet-content {
-            flex-direction: row;
+        .planet-options:not(:focus-within) button:first-child {
+            background-color: var(--clr-accent-planet);
         }
 
+        button:focus:nth-child(1) {
+            background-color: var(--clr-accent-planet);
+        }
+        button:focus:nth-child(2) {
+            background-color: var(--clr-accent-planet);
+        }
+        button:focus:nth-child(3) {
+            background-color: var(--clr-accent-planet);
+        }
         button > span:first-child {
-            opacity: 0.5;
-            margin-right: 17px;
+            display: inline-block;
+        }
+        button {
+            box-sizing: border-box;
+            border: 1px solid var(--clr-border);
+            background-color: var(--btn-default);
+            width: 281px;
+            height: 40px;
+            font-size: 9px;
+            line-height: 25px;
+            letter-spacing: 1.929px;
+            text-transform: uppercase;
+            padding-inline: 20px;
+            padding: 8px 20px 7px 20px;
+            opacity: 1;
+        }
+
+        button:hover {
+            background-color: var(--btn-hover);
+            mix-blend-mode: normal;
+            /* opacity: 0.2; */
+        }
+
+        button:focus,
+        [data-btn-current] {
+            background-color: var(--btn-active);
         }
     }
-
     @media (min-width: 1440px) {
-        button > span:first-child {
-            margin-right: 28px;
-        }
-        .planet-content {
-            flex-direction: column;
-        }
-
-        .figure-tooltip {
-            top: calc(1024px / 2 + 84px / 2);
-            left: calc(
-                calc(100vw - 1440px) / 2 + 165px + 925px / 2 -
-                    var(--tooltip-w-size)
-            );
-            position: absolute;
-            z-index: 1;
+        button {
+            padding: 12px 28px 11px 28px;
+            font-size: 12px;
+            line-height: 25px;
+            letter-spacing: 2.5714285373687744px;
+            width: 350px;
+            height: 48px;
         }
     }
 </style>

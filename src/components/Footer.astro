@@ -25,49 +25,94 @@ const { rotation, revolution, radius, temperature } = Astro.props;
 </footer>
 
 <style>
+    footer {
+        grid-area: footer;
+    }
     .planet-footer {
         grid-area: footer;
         width: 100%;
         display: flex;
         flex-direction: column;
-        justify-content: flex-end;
+        padding-inline: 24px;
+        gap: 8px;
         align-self: flex-end;
     }
 
     section {
         display: flex;
-        flex-direction: column;
-        align-items: start;
-        justify-content: center;
-        width: 255px;
-        height: 128px;
-        padding: 23px;
+        justify-content: space-between;
+        padding-inline: 24px;
+        padding-block: 16px;
+        align-items: center;
     }
 
     div {
         font-family: "Antonio", sans-serif;
         font-style: normal;
         font-weight: 400;
-        font-size: 40px;
-        line-height: 52px;
-        /* identical to box height */
-        letter-spacing: -1.5px;
         text-transform: uppercase;
     }
-
     h4 {
         opacity: 0.5;
     }
 
     @media (min-width: 768px) {
+        footer {
+            gap: 11px;
+        }
+
+        section {
+            flex-direction: column;
+            align-items: flex-start;
+        }
         .planet-footer {
             flex-direction: row;
+            padding: 0;
+        }
+        h4 {
+            font-size: 8px;
+            line-height: 16px;
+            letter-spacing: 0.727px;
+        }
+        div {
+            font-size: 24px;
+            /* identical to box height */
+            letter-spacing: -0.9px;
+        }
+
+        section {
+            width: 164px;
+            height: 88px;
+            padding: 15px;
         }
     }
     @media (min-width: 1440px) {
         .planet-footer {
             gap: 30px;
-            grid-area: footer;
+        }
+
+        div {
+            font-size: 40px;
+            line-height: 52px;
+            /* identical to box height */
+            letter-spacing: -1.5px;
+        }
+
+        section {
+            width: 255px;
+            height: 128px;
+            padding: 23px;
+        }
+
+        h4 {
+            font-family: "Spartan";
+            font-style: normal;
+            font-weight: 700;
+            text-transform: uppercase;
+            font-size: 12px;
+            line-height: 25px;
+            /* identical to box height, or 208% */
+            letter-spacing: 2.57143px;
         }
     }
 </style>

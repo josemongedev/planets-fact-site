@@ -1,40 +1,15 @@
 ---
 import IconHamburger from "./IconHamburger.astro";
-
-const planetList = [
-    "mercury",
-    "venus",
-    "earth",
-    "mars",
-    "jupiter",
-    "saturn",
-    "uranus",
-    "neptune",
-];
+import NavLinks from "./NavLinks.astro";
 ---
 
 <header>
     <section>
-        <span class="planets-site">The planets</span>
+        <span class="planets-site-name">The planets</span>
         <button class="btn-hambuger">
             <IconHamburger />
         </button>
-        <nav>
-            {
-                planetList.map((planet) => {
-                    const accentClasses = `accent-hover link-${planet}`;
-                    const planetLink = `/planets-fact-site/${planet}`;
-                    return (
-                        <div class="planet-list-element">
-                            <div class={accentClasses} />
-                            <a class="heading-4" href={planetLink}>
-                                {planet}
-                            </a>
-                        </div>
-                    );
-                })
-            }
-        </nav>
+        <NavLinks />
     </section>
 </header>
 
@@ -47,17 +22,15 @@ const planetList = [
     }
 
     section {
+        width: 100%;
         display: flex;
         justify-content: space-between;
-        /* padding-top: 16px; */
-        padding-bottom: 17px;
+        align-items: stretch;
+        padding: 16px 24px;
     }
 
-    section > * {
-        padding-top: 16px;
-    }
-
-    .planets-site {
+    .planets-site-name {
+        text-align: center;
         font-family: "Antonio";
         font-style: normal;
         font-weight: 400;
@@ -69,92 +42,31 @@ const planetList = [
         color: #ffffff;
     }
 
+    .btn-hamburger,
+    button:active,
+    button:hover,
+    button:focus,
     button {
+        all: unset;
+        width: 24px;
+        height: 17px;
+        appearance: none;
+        color: transparent;
         background-color: transparent;
         border: none;
         outline: none;
-    }
-
-    nav {
-        padding-top: 0;
-    }
-
-    .planet-list-element {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-    }
-
-    a {
-        all: unset;
-        display: block;
-        width: 100%;
-        text-transform: uppercase;
-        opacity: 0.75;
-        cursor: pointer;
-    }
-
-    a:hover {
-        opacity: 1;
-    }
-
-    /* Nav list links accent visibility configuration */
-
-    .accent-hover:has(+ a:hover) {
-        --accent-visible: visible !important;
-    }
-    .accent-hover {
-        visibility: var(--accent-visible);
-        width: 100%;
-        height: 4px;
-    }
-
-    .link-mercury {
-        background-color: var(--clr-accent-mercury);
-    }
-    .link-venus {
-        background-color: var(--clr-accent-venus);
-    }
-    .link-earth {
-        background-color: var(--clr-accent-earth);
-    }
-    .link-mars {
-        background-color: var(--clr-accent-mars);
-    }
-    .link-jupiter {
-        background-color: var(--clr-accent-jupiter);
-    }
-    .link-saturn {
-        background-color: var(--clr-accent-saturn);
-    }
-    .link-uranus {
-        background-color: var(--clr-accent-uranus);
-    }
-    .link-neptune {
-        background-color: var(--clr-accent-neptune);
+        padding: 0;
+        margin: 0;
     }
 
     @media (min-width: 768px) {
-        section > * {
-            padding-top: 32px;
-        }
-
         section {
+            justify-content: space-between;
             flex-direction: column;
+            gap: 39px;
+            padding-inline: 53px;
+            padding-top: 32px;
             padding-bottom: 27px;
-        }
-
-        nav {
-            position: relative;
-            display: flex;
-            justify-content: end;
-            align-items: center;
-            gap: 33px;
-        }
-
-        div {
-            width: 100%;
-            height: 100%;
         }
 
         button {
@@ -166,11 +78,8 @@ const planetList = [
             padding-top: 22px;
         }
 
-        nav {
-            padding-top: 0;
-        }
-
         section {
+            padding-top: 0;
             flex-direction: row;
             padding-inline: 32px;
         }
