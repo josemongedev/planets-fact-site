@@ -31,16 +31,16 @@ const geologyImage = "/planets-fact-site/" + images.geology;
             <img src={planetImage} alt="" />
             <!-- <Figure filePath={images.planet} /> -->
         </div>
-        <div class="figure-img" data-content="structure">
+        <div class="figure-img hide-content-option" data-content="structure">
             <img src={planetInternal} alt="" />
             <!-- <Figure filePath={images.internal} /> -->
         </div>
-        <div class="figure-img" data-content="geology">
+        <div class="figure-img hide-content-option" data-content="geology">
             <img src={planetImage} alt="" />
             <!-- <Figure filePath={images.planet} /> -->
         </div>
         <img
-            class="figure-tooltip"
+            class="figure-tooltip hide-content-option"
             src={geologyImage}
             alt={geology.content}
             data-content="geology"
@@ -52,10 +52,10 @@ const geologyImage = "/planets-fact-site/" + images.geology;
     <p class="planet-overview" data-content="overview">
         {overview.content}
     </p>
-    <p class="planet-structure" data-content="structure">
+    <p class="planet-structure hide-content-option" data-content="structure">
         {structure.content}
     </p>
-    <p class="planet-geology" data-content="geology">
+    <p class="planet-geology hide-content-option" data-content="geology">
         {geology.content}
     </p>
     <div>
@@ -64,12 +64,12 @@ const geologyImage = "/planets-fact-site/" + images.geology;
                 Wikipedia
             </a>
         </span>
-        <span data-content="structure">
+        <span class="hide-content-option" data-content="structure">
             Source: <a class="structures-source" href={structure.source}>
                 Wikipedia
             </a>
         </span>
-        <span data-content="geology">
+        <span class="hide-content-option" data-content="geology">
             Source: <a class="geology-source" href={geology.source}>
                 Wikipedia
             </a>
@@ -77,15 +77,15 @@ const geologyImage = "/planets-fact-site/" + images.geology;
     </div>
 </section>
 <div class="planet-options">
-    <button>
+    <button class="button-overview">
         <span>01</span><span>Overview</span>
     </button>
-    <button>
+    <button class="button-structure">
         <span>02</span><span
             ><span class="long-name">Internal&nbsp;</span>Structure</span
         >
     </button>
-    <button>
+    <button class="button-geology">
         <span>03</span><span
             ><span class="long-name">Surface&nbsp;</span>Geology</span
         >
@@ -94,23 +94,95 @@ const geologyImage = "/planets-fact-site/" + images.geology;
 
 <script>
     window.onload = function () {
-        // Elements
-        const btnHamburger =
-            document.getElementsByClassName("btn-hamburger")[0];
-        const navlinks = document.getElementsByClassName("planet-list")[0];
+        // ***** Elements *****
 
-        // Handlers
+        // Buttons
+        const hamburgerButton =
+            document.getElementsByClassName("button-hamburger")[0];
+        const navlinks = document.getElementsByClassName("planet-list")[0];
+        const overviewButton =
+            document.getElementsByClassName("button-overview")[0];
+        const structureButton =
+            document.getElementsByClassName("button-structure")[0];
+        const geologyButton =
+            document.getElementsByClassName("button-geology")[0];
+
+        // Content elements
+        const overviewContentElements = document.querySelectorAll(
+            "[data-content='overview']"
+        );
+        const structureContentElements = document.querySelectorAll(
+            "[data-content='structure']"
+        );
+        const geologyContentElements = document.querySelectorAll(
+            "[data-content='geology']"
+        );
+
+        // ***** Handlers *****
         const hamburgerClickHandler = () => {
             navlinks.classList.toggle("hide-nav");
-            btnHamburger.classList.toggle("btn-hamburger-clicked");
+            hamburgerButton.classList.toggle("button-hamburger-clicked");
         };
 
-        // Events
-        btnHamburger.addEventListener("click", hamburgerClickHandler);
+        const overviewClickHandler = () => {
+            overviewButton.classList.add("button-clicked");
+            structureButton.classList.remove("button-clicked");
+            geologyButton.classList.remove("button-clicked");
+
+            overviewContentElements.forEach((el) => {
+                el.classList.remove("hide-content-option");
+            });
+            structureContentElements.forEach((el) => {
+                el.classList.add("hide-content-option");
+            });
+            geologyContentElements.forEach((el) => {
+                el.classList.add("hide-content-option");
+            });
+        };
+        const structureClickHandler = () => {
+            structureButton.classList.add("button-clicked");
+            geologyButton.classList.remove("button-clicked");
+            overviewButton.classList.remove("button-clicked");
+
+            structureContentElements.forEach((el) => {
+                el.classList.remove("hide-content-option");
+            });
+            overviewContentElements.forEach((el) => {
+                el.classList.add("hide-content-option");
+            });
+            geologyContentElements.forEach((el) => {
+                el.classList.add("hide-content-option");
+            });
+        };
+        const geologyClickHandler = () => {
+            geologyButton.classList.add("button-clicked");
+            overviewButton.classList.remove("button-clicked");
+            structureButton.classList.remove("button-clicked");
+
+            geologyContentElements.forEach((el) => {
+                el.classList.remove("hide-content-option");
+            });
+            structureContentElements.forEach((el) => {
+                el.classList.add("hide-content-option");
+            });
+            overviewContentElements.forEach((el) => {
+                el.classList.add("hide-content-option");
+            });
+        };
+
+        // ***** Events *****
+        hamburgerButton.addEventListener("click", hamburgerClickHandler);
+        overviewButton.addEventListener("click", overviewClickHandler);
+        structureButton.addEventListener("click", structureClickHandler);
+        geologyButton.addEventListener("click", geologyClickHandler);
     };
 </script>
 
 <style>
+    .hide-content-option {
+        display: none;
+    }
+
     .planet-figure {
         grid-area: figure;
     }
@@ -270,7 +342,7 @@ const geologyImage = "/planets-fact-site/" + images.geology;
 
     /* Button configuration and variables  */
     /* Selected by default when buttons lose focus */
-    .planet-options:not(:focus-within) button:first-child {
+    /* .planet-options:not(:focus-within) button:first-child {
         background-color: transparent;
     }
 
@@ -298,6 +370,9 @@ const geologyImage = "/planets-fact-site/" + images.geology;
     }
     [data-content="geology"] {
         display: var(--show-geology);
+    } */
+    .button-clicked {
+        background-color: var(--clr-accent-planet);
     }
 
     button {
