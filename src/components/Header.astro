@@ -24,7 +24,6 @@ import NavLinks from "./NavLinks.astro";
         const hamburgerClickHandler = () => {
             navlinks.classList.toggle("hide-nav");
             btnHamburger.classList.toggle("btn-hamburger-clicked");
-            console.warn("Hamburger clicked!!");
         };
 
         // Events
@@ -78,8 +77,11 @@ import NavLinks from "./NavLinks.astro";
         margin: 0;
     }
 
+    .btn-hamburger {
+        fill: #ffffff !important;
+    }
     .btn-hamburger-clicked {
-        fill: #979797;
+        fill: #979797 !important;
     }
 
     @media (min-width: 768px) {
