@@ -106,19 +106,17 @@ const geologyImage = "/planets-fact-site/" + images.geology;
     /* End grid areas */
 
     .planet-content {
-        display: flex;
-        flex-direction: column;
+        display: grid;
+
+        grid-template-columns: 1fr;
+        grid-template-rows: 52px 132px calc(32px + 25px);
         align-items: stretch;
-        flex-wrap: nowrap;
-        gap: 39px;
+        justify-content: space-between;
         padding-inline: 24px;
     }
 
-    .planet-content {
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        align-items: stretch;
+    .planet-content div {
+        align-self: flex-end;
     }
 
     .planet-options {
@@ -181,6 +179,10 @@ const geologyImage = "/planets-fact-site/" + images.geology;
             text-align: left;
             place-self: center start;
             padding-inline: 0px;
+        }
+
+        .planet-content div {
+            align-self: flex-start;
         }
 
         .planet-options {
