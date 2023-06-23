@@ -70,7 +70,7 @@ const planetList = [
 
     @media (min-width: 768px) {
         nav {
-            position: relative;
+            position: static;
             display: flex;
             align-items: center;
             gap: 33px;
@@ -88,13 +88,15 @@ const planetList = [
     }
     @media (min-width: 1440px) {
         nav {
+            height: 58px;
+            align-items: stretch;
+            justify-content: space-between;
             padding-top: 0;
         }
 
         .planet-list-element {
             display: flex;
             flex-direction: column;
-            justify-content: space-between;
         }
     }
 </style>
