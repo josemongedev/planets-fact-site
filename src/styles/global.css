@@ -71,31 +71,6 @@
   border-color: var(--clr-border);
 }
 
-.planet-earth {
-  --clr-accent-planet: var(--clr-accent-earth);
-}
-.planet-mercury {
-  --clr-accent-planet: var(--clr-accent-mercury);
-}
-.planet-venus {
-  --clr-accent-planet: var(--clr-accent-venus);
-}
-.planet-mars {
-  --clr-accent-planet: var(--clr-accent-mars);
-}
-.planet-jupiter {
-  --clr-accent-planet: var(--clr-accent-jupiter);
-}
-.planet-saturn {
-  --clr-accent-planet: var(--clr-accent-saturn);
-}
-.planet-uranus {
-  --clr-accent-planet: var(--clr-accent-uranus);
-}
-.planet-neptune {
-  --clr-accent-planet: var(--clr-accent-neptune);
-}
-
 h1,
 .header-1 {
   font-family: "Antonio", sans-serif;

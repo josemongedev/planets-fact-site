@@ -1,5 +1,6 @@
 ---
 import "../styles/navlinks.css";
+import IconChevron from "./IconChevron.astro";
 
 const planetList = [
     "mercury",
@@ -13,16 +14,19 @@ const planetList = [
 ];
 ---
 
-<nav>
+<nav class="planet-list hide-nav">
     {
         planetList.map((planet) => {
             const accentClasses = `accent-hover bg-${planet}`;
             const planetLink = `/planets-fact-site/${planet}`;
             return (
-                <div class="planet-list-element">
+                <div class="planet-list__element">
                     <div class={accentClasses} />
                     <a class="heading-4" href={planetLink}>
-                        {planet}
+                        <span>{planet}</span>
+                        <span>
+                            <IconChevron />
+                        </span>
                     </a>
                 </div>
             );
@@ -32,20 +36,44 @@ const planetList = [
 
 <style>
     nav {
-        display: none;
         position: absolute;
-        padding-top: 0;
-    }
-
-    .planet-list-element {
+        z-index: 1;
+        top: 69px;
+        left: 0;
+        height: calc(100vh - 68px);
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        background-color: var(--clr-body-bg);
+        width: 100%;
+    }
+
+    .hide-nav {
+        display: none !important;
+    }
+
+    .planet-list__element {
+        width: 100%;
+        display: flex;
+        justify-content: left;
+        align-items: center;
+        height: 67px;
+        border-style: solid;
+        border-width: 0 0 1px 0;
+        border-color: rgba(255, 255, 255, 0.2);
+    }
+
+    .planet-list__element > div {
+        display: none;
     }
 
     a {
         all: unset;
-        display: block;
+        padding-inline: 24px;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 100%;
         width: 100%;
         text-transform: uppercase;
         text-align: center;
@@ -55,6 +83,7 @@ const planetList = [
 
     a:hover {
         opacity: 1;
+        background-color: var(--clr-accent-planet);
     }
 
     /* Nav list links accent visibility configuration */
@@ -69,12 +98,32 @@ const planetList = [
     }
 
     @media (min-width: 768px) {
+        .hide-nav {
+            display: flex !important;
+        }
+
         nav {
             position: static;
             display: flex;
+            flex-direction: row;
             align-items: center;
+            justify-content: center;
             gap: 33px;
-            padding-top: 22px;
+            padding-top: 0px;
+            top: auto;
+            left: auto;
+            height: 25px;
+            width: auto;
+            background-color: transparent;
+        }
+
+        a > span:last-child {
+            display: none;
+        }
+
+        a:hover {
+            opacity: 1;
+            background-color: transparent;
         }
 
         div {
@@ -82,8 +131,19 @@ const planetList = [
             height: 100%;
         }
 
+        .planet-list__element > div {
+            display: block;
+        }
+
         button {
             display: none;
+        }
+
+        .planet-list__element {
+            justify-content: center;
+
+            padding-inline: 0;
+            border: none;
         }
     }
     @media (min-width: 1440px) {
@@ -94,9 +154,10 @@ const planetList = [
             padding-top: 0;
         }
 
-        .planet-list-element {
+        .planet-list__element {
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
         }
     }
 </style>

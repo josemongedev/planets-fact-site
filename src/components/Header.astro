@@ -6,12 +6,31 @@ import NavLinks from "./NavLinks.astro";
 <header>
     <section>
         <span class="planets-site-name">The planets</span>
-        <button class="btn-hambuger">
+        <button class="btn-hamburger">
             <IconHamburger />
         </button>
         <NavLinks />
     </section>
 </header>
+
+<script>
+    window.onload = function () {
+        // Elements
+        const btnHamburger =
+            document.getElementsByClassName("btn-hamburger")[0];
+        const navlinks = document.getElementsByClassName("planet-list")[0];
+
+        // Handlers
+        const hamburgerClickHandler = () => {
+            navlinks.classList.toggle("hide-nav");
+            btnHamburger.classList.toggle("btn-hamburger-clicked");
+            console.warn("Hamburger clicked!!");
+        };
+
+        // Events
+        btnHamburger.addEventListener("click", hamburgerClickHandler);
+    };
+</script>
 
 <style>
     header {
@@ -25,6 +44,7 @@ import NavLinks from "./NavLinks.astro";
         width: 100%;
         display: flex;
         justify-content: space-between;
+        align-items: center;
         padding: 16px 24px;
     }
 
@@ -58,6 +78,10 @@ import NavLinks from "./NavLinks.astro";
         margin: 0;
     }
 
+    .btn-hamburger-clicked {
+        fill: #979797;
+    }
+
     @media (min-width: 768px) {
         section {
             justify-content: space-between;
@@ -68,8 +92,9 @@ import NavLinks from "./NavLinks.astro";
             padding-bottom: 27px;
         }
 
+        .btn-hamburger,
         button {
-            display: none;
+            display: none !important;
         }
     }
     @media (min-width: 1440px) {
