@@ -13,24 +13,6 @@ import NavLinks from "./NavLinks.astro";
     </section>
 </header>
 
-<script>
-    window.onload = function () {
-        // Elements
-        const btnHamburger =
-            document.getElementsByClassName("btn-hamburger")[0];
-        const navlinks = document.getElementsByClassName("planet-list")[0];
-
-        // Handlers
-        const hamburgerClickHandler = () => {
-            navlinks.classList.toggle("hide-nav");
-            btnHamburger.classList.toggle("btn-hamburger-clicked");
-        };
-
-        // Events
-        btnHamburger.addEventListener("click", hamburgerClickHandler);
-    };
-</script>
-
 <style>
     header {
         width: 100%;

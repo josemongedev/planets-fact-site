@@ -54,7 +54,7 @@ const planetClass = "planet-".concat(lowercasePlanet);
 
 <style>
     main {
-        height: 100vh;
+        height: max(100vh, 100%);
         width: 100%;
         background-image: url(../svg/background-stars.svg);
         display: flex;
@@ -73,6 +73,7 @@ const planetClass = "planet-".concat(lowercasePlanet);
             "space1 footer  space2";
         grid-template-columns: 0 375px 0;
         grid-template-rows: 50px 375px 235px calc(260px + 28px);
+        margin-bottom: 47px;
 
         place-items: center;
     }
@@ -106,6 +107,8 @@ const planetClass = "planet-".concat(lowercasePlanet);
     }
     @media (min-width: 1440px) {
         main {
+            height: 100vh;
+
             /* padding-bottom: 56px; */
             padding: 0;
         }
