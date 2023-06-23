@@ -284,7 +284,6 @@ const geologyImage = "/planets-fact-site/" + images.geology;
 
     button {
         all: unset;
-
         display: flex;
         justify-content: left;
         align-items: center;
@@ -298,7 +297,8 @@ const geologyImage = "/planets-fact-site/" + images.geology;
 
         color: var(--clr-text-primary);
         background-color: var(--clr-body-bg);
-        height: 10px;
+        height: calc(100% - 4px);
+
         padding: 0;
         margin: 0;
         mix-blend-mode: normal;
@@ -306,25 +306,30 @@ const geologyImage = "/planets-fact-site/" + images.geology;
         text-align: center;
 
         cursor: pointer;
+
+        border-style: solid;
+        border-width: 0 0 4px 0;
+        border-color: var(--clr-body-bg);
     }
 
     button:hover {
         opacity: 1;
-    }
-
-    button:after {
-        display: block;
-        position: absolute;
-        top: 20px;
-        left: 0;
-        width: 80px;
-        height: 4px;
-        background-color: var(--clr-accent-planet);
+        border-color: var(--clr-accent-planet);
     }
 
     button > span:first-child {
         display: none;
     }
+
+    /* .accent-bar {
+        display: block;
+        position: absolute;
+        top: 20px;
+        left: 0;
+        width: 100%;
+        height: 4px;
+        background-color: var(--clr-accent-planet);
+    } */
 
     @media (min-width: 768px) {
         .planet-options:not(:focus-within) button:first-child {
